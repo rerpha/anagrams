@@ -1,0 +1,9 @@
+name: Anagrams
+version: "0.0.1"
+author: Me
+about: Generates anagrams of a given word
+args:
+    - WORD:
+        help: Sets the word to generate anagrams of
+        required: true
+        index: 1
