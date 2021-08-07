@@ -22,7 +22,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions-rs/cargo@v1
       with:
-        command: build
+        command: +nightly build
     - uses: actions-rs/cargo@v1
       with:
-        command: test
+        command: +nightly test
