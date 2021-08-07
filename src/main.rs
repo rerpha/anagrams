@@ -8,8 +8,7 @@ fn generate_anagrams(word: &str) -> Vec<String> {
     let vec = word.chars().collect::<Vec<char>>();
     for perm in vec.iter().permutations(vec.len()).unique() {
         if perm.len() > 0{
-            let s: String = perm.into_iter().collect();
-            anagrams.push(s);}
+            anagrams.push(perm.into_iter().collect::<String>());}
     }
     return anagrams;
 }
@@ -19,11 +18,16 @@ fn main() {
     let matches = App::from_yaml(yaml).get_matches();
     let inp_word = matches.value_of("WORD").unwrap();
     println!("your input was: {}\nAnagrams of this are:\n", inp_word);
-
+    use std::time::Instant;
+    let now = Instant::now();
     let anagrams = generate_anagrams(inp_word);
     for i in anagrams.iter() {
         print!("{} ", &i);
     }
+
+    let elapsed = now.elapsed();
+    println!("Elapsed: {:.2?} - {} elements in vector", elapsed, anagrams.len());
+    print!("\n")
 }
 
 
